@@ -15,6 +15,6 @@ export const getMovie = title => ({
 export const getInfo = id => {
     return {
         type: 'GET_DETAILS',
-        payload: axios.gt(`/movie/${id}`)
+        payload: axios.get(`/movie/${id}`)
     }
 };

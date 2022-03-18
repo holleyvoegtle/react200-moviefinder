@@ -21,6 +21,7 @@ app.get('/movieInfo/:inputValue', (req, res) => {
   });
 
 app.get('/movie/:id', (req, res) => {
+  console.log('movie id????', req.params.id)
     axios({
         url: `http://omdbapi.com/?i=${req.params.id}&apikey=${process.env.OMDB_API_KEY}`,
         method: 'get'

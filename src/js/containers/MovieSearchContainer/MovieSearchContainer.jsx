@@ -1,5 +1,6 @@
 import React from 'react';
 import { titleSearch, getMovie } from './MSearchCActions';
+import { Link } from 'react-router-dom';
 
 export default class MovieSearchContainer extends React.Component {
 	constructor(props) {
@@ -21,6 +22,7 @@ export default class MovieSearchContainer extends React.Component {
 
 	render() {
 		const { title, movies } = this.props;
+		console.log("this is movies", movies)
 		return (
 			<div>
 				<div className='container'>
@@ -39,16 +41,43 @@ export default class MovieSearchContainer extends React.Component {
 							<button
 								className='btn btn-outline-secondary'
 								type='button'
-								onClick={ this.handleSearch }
+								onClick={ this.handleSubmit }
 							>Go!</button>
 						</div>
 					</div>
 				</div>
 
-				
+				{movies.map((searchedMovie) => (
+					<div className='card' key={ searchedMovie.imdbID }>
+						<div className='card-body row'>
+							<div className='col-3'>
+								<img
+									className='detail col-5 mt-3 mb-3'
+									src={ searchedMovie.Poster }
+									
+								/>	
+							</div>
+							<div className='col-9'>
+								<h5 className='card-title'>{ searchedMovie.Title }</h5>
+								<h6
+									className='card-subtitle'
+								>
+									<b>{ searchedMovie.Year }</b>
+								</h6>
+								<hr />
+								<p className='card-text'>{searchedMovie.Plot}</p>
+								{console.log("in movie search jsx", `/movie/${searchedMovie.imdbID}`)}
+								<Link to={`/movie/${searchedMovie.imdbID}`} >
+									<button type='button'><span>Movie Information</span></button>
+								</Link>
+								{/*<a href={ `/#/movie/${ searchedMovie.imdbID }`} className='btn btn-danger' id='link'>Movie Information</a>*/}
+							</div>
+						</div>
+					</div>
+				))}	
 				
 			</div>
-		)
+		);
 	}
 }
 
