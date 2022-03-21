@@ -8,7 +8,7 @@ class MovieDetailsContainer extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props
-    dispatch(getInfo(this.props.match.param.id));
+    dispatch(getInfo(this.props.match.params.id));
     //let test = dispatch(getInfo(this.props.match.param.id));
   }
 
