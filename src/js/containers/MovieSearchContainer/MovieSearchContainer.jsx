@@ -22,9 +22,10 @@ export default class MovieSearchContainer extends React.Component {
 
 	render() {
 		const { title, movies } = this.props;
-		console.log("this is movies", movies)
+		
 		return (
 			<div>
+				<div style={({ backgroundImage: 'url("introImage.png")', height: "120vh"})}>
 				<div className='container'>
 					<div className='jumbotron'>
 						<h1 id='appTitle' className='display-3 text-center'>Movie Finder</h1>
@@ -43,6 +44,7 @@ export default class MovieSearchContainer extends React.Component {
 								type='button'
 								onClick={ this.handleSubmit }
 							>Go!</button>
+							</div>
 						</div>
 					</div>
 				</div>
